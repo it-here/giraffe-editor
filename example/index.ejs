@@ -7,6 +7,60 @@
     <title>Giraffe-Editor</title>
 </head>
 <body>
+<div style="height: 100px"></div>
+    <div style="height: 500px;background-color: #f7f7f7" >
+        <div class="giraffe-editor">
+            <div class="toolbar-wrapper">
+                <div id="toolbar" >
+                    <span class="ql-formats">
+                        <select class="ql-header" >
+                            <option value="1">H1</option>
+                            <option value="2">H2</option>
+                            <option value="3">H3</option>
+                            <option value="4">H4</option>
+                            <option value="5">H5</option>
+                            <option value="6">H6</option>
+                        </select>
+                        <select class="ql-size" >
+                            <option value={`9pt`}>9</option>
+                            <option value={`10pt`}>10</option>
+                            <option value={`11pt`}>11</option>
+                            <option value={`12pt`}>12</option>
+                            <option value={`14pt`}>14</option>
+                            <option value={`16pt`}>16</option>
+                            <option value={`18pt`}>18</option>
+                            <option value={`22pt`}>22</option>
+                            <option value={`24pt`}>24</option>
+                            <option value={`30pt`}>30</option>
+                            <option value={`36pt`}>36</option>
+                        </select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-bold"></button>
+                        <button class="ql-underline"></button>
+                        <button class="ql-strike"></button>
+                    </span>
 
+                    <span class="ql-formats">
+                        <button class="ql-list" value="ordered"></button>
+                        <button class="ql-list" value="bullet"></button>
+                        <button class="ql-script" value="sub"></button>
+                        <button class="ql-script" value="super"></button>
+                        <button class="ql-image"></button>
+                        <select class="ql-color"></select>
+                        <select class="ql-background"></select>
+                        <button class="ql-blockquote"></button>
+                        <button class="ql-code-block"></button>
+                        <button class="ql-clean"></button>
+                    </span>
+                </div>
+            </div>
+            <div class="editor-scroller">
+                <div id="editor">
+                    <div>ss</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
