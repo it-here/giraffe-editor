@@ -12,7 +12,13 @@ import "quill/dist/quill.snow.css"
 $(function () {
 
     var quill = new GiraffeEditor('#editor', {
-        modules: { toolbar: '#toolbar' },
+        modules: {
+            toolbar: '#toolbar' ,
+            imageResize:{
+                modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
+            },
+            imageDrop: true
+        },
         theme: 'snow'
     });
     let title = document.createElement('div');
