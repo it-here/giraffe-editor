@@ -1,69 +1,99 @@
 .giraffe-editor{
   height: 100%;
-}
-.toolbar-wrapper{
-  .ql-toolbar{
-    &.ql-snow{
-      background-color: #f7f7f7;
-      height: 46px;
-      padding: 11px 0 8px;
-      white-space: nowrap;
-      border: none;
-      margin: 0 auto;
-      text-align: center;
-      font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
-      transition: height 0.2s ease-in;
-    }
+  min-width: 1280px;
 
-  }
-}
-.editor-scroller{
-  width: 100%;
-  height: calc(100% - 46px);
-  position: relative;
-  overflow-y: auto;
-  .ql-container{
-    width: 816px;
-    margin-left: auto;
-    margin-right: auto;
+  .toolbar-wrapper{
+    box-shadow: 0 3px 2px rgba(20, 20, 20, 0.12);
+    .ql-toolbar{
+      &.ql-snow{
+        background-color: #f7f7f7;
+        height: 46px;
+        padding: 11px 0 8px;
+        white-space: nowrap;
+        border: none;
+        margin: 0 auto;
+        text-align: center;
+        font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+        transition: height 0.2s ease-in;
 
-    border: none;
-    font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    height: auto !important;
-    background: #fff;
-    border-bottom: 1px solid #d9d9d9;
-    box-shadow: 0 1px 6px #ccc;
 
-    .ql-title{
-      .ql-title-box{
-        box-sizing: content-box;
-        margin: 0 100px;
-        width: auto;
-        font-size: 22.5pt;
-        height: 60px;
-        padding-top: 90px;
-        border-bottom: 1px solid #e8ecf1;
-        input{
+        .ql-picker-label{
           outline: none;
-          border: none;
-          box-shadow: none;
-          display: block;
-          width: 100%;
-          height: 50px;
-          font-size: 100%;
-          line-height: 50px;
-          color: #333;
-          font-weight: bold;
-          background: transparent;
+        }
+
+        .ql-header{
+          width: 75px;
+          .ql-picker-options{
+            span{
+              text-align: left;
+            }
+          }
+        }
+        .ql-size{
+          width: 50px;
+        }
+      }
+
+    }
+  }
+  .editor-scroller{
+    width: 100%;
+    height: calc(100% - 46px);
+    position: relative;
+    overflow-y: auto;
+    .editor-wrapper{
+      width: 716px;
+      margin: 10px auto;
+      border: none;
+      font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      height: auto !important;
+      background: #fff;
+      border-bottom: 1px solid #d9d9d9;
+      box-shadow: 0 1px 6px #ccc;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 90px;
+      .ql-container{
+        &.ql-snow{
+          border: 0;
+        }
+
+        .ql-title{
+          padding-bottom: 20px;
+          .ql-title-box{
+            box-sizing: content-box;
+            width: auto;
+            font-size: 22.5pt;
+            height: 60px;
+
+            border-bottom: 1px solid #e8ecf1;
+            input{
+              outline: none;
+              border: none;
+              box-shadow: none;
+              display: block;
+              width: 100%;
+              height: 50px;
+              font-size: 100%;
+              line-height: 50px;
+              color: #333;
+              font-weight: bold;
+              background: transparent;
+            }
+          }
+        }
+        .ql-editor{
+          font-size: 11pt;
+          line-height: 1.7;
+          min-height: 1172px;
+          padding: 0;
         }
       }
     }
-    .ql-editor{
-      padding: 20px 100px 100px;
-      font-size: 11pt;
-      line-height: 1.7;
-      min-height: 1172px;
-    }
+
   }
+
+
 }
+
