@@ -14,12 +14,12 @@ import { ImageDrop } from 'quill-image-drop-module';
 Quill.register('modules/imageDrop', ImageDrop);
 
 const icons = Quill.import("ui/icons");
-let s = myicons;
-debugger
-//icons['background'] = '<svg style="background: url("'+myicons.background+'")">';
-//icons['background'] = icons.background;
-icons['background'] = myicons.background;
-
+// let s = myicons;
+// debugger
+// //icons['background'] = '<svg style="background: url("'+myicons.background+'")">';
+// //icons['background'] = icons.background;
+// icons['background'] = myicons.background;
+Object.assign(icons,myicons);
 class Giraffe extends Quill{
 
     constructor(container, options) {
