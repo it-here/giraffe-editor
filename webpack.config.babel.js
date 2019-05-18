@@ -63,7 +63,7 @@ let config = {
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, use:[{loader:'url-loader'}]},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use:[{loader:'url-loader'}]},
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use:[{loader:'file-loader'}]},
-            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use:[{loader:'url-loader'}]},
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use:[{loader:'html-loader'}]},
         ]
     },
     devServer:{
