@@ -6,7 +6,6 @@
  * Time: 22:25
  */
 module.exports ={
-    'background': require('../icons/background.svg'),
     'bold': require('../icons/bold.svg'),
     'clean'     : require('../icons/clean.svg'),
     'code'      : require('../icons/code.svg'),
