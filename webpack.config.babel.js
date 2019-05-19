@@ -30,7 +30,7 @@ let config = {
                     {
                         loader: 'babel-loader' ,
                         query:{
-                            "presets":['@babel/env']
+                            "presets":['@babel/env','@babel/react']
                         }
                     }
                 ]
