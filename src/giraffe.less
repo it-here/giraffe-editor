@@ -16,6 +16,9 @@
         font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
         transition: height 0.2s ease-in;
 
+        .ql-formats{
+          position: relative;
+        }
 
         .ql-picker-label{
           outline: none;
@@ -130,6 +133,29 @@
 
   }
 
+
+  .ql-inserts{
+    &::before{
+      content: '插入';
+    }
+  }
+
+  .ql-inserts-label{
+    display: none;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 35px;
+    position: absolute;
+    z-index: 200;
+    white-space: nowrap;
+    padding: 5px 0;
+    background-color: #fff;
+    border-color: #ccc;
+    box-shadow: 0 1px 6px rgba(99,99,99,0.2);
+    width: 130px;
+    border-radius: 3px;
+  }
 
 }
 
