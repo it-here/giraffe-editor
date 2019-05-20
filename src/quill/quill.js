@@ -6,6 +6,8 @@
  * Time: 10:30
  */
 import Quill from "quill";
+import ImageResize from 'quill-image-resize-module';
+import { ImageDrop } from 'quill-image-drop-module';
 
 let AlignStyle = Quill.import('attributors/style/align');
 
@@ -22,5 +24,10 @@ Quill.register({
     'ui/icons': Icons,
 }, true);
 
+
+
+Quill.register('modules/imageResize', ImageResize);
+
+Quill.register('modules/imageDrop', ImageDrop);
 
 export default Quill;

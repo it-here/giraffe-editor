@@ -9,10 +9,10 @@ import { ImageDrop } from 'quill-image-drop-module';
 
 Quill.register('modules/imageDrop', ImageDrop);
 
-class Giraffe extends Quill{
+class GiraffeDep extends Quill{
 
     constructor(container, options) {
         super(container,options)
     }
 }
-export default Giraffe
+export default GiraffeDep
