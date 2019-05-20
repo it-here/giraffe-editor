@@ -21,7 +21,7 @@ const Icons = Object.assign(Quill.import("ui/icons"),require("../ui/icons"));
 Quill.register({
     'formats/align': AlignStyle,
     'formats/size': SizeStyle,
-    'ui/icons': Icons,
+    'ui/icons': Icons
 }, true);
 
 

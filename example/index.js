@@ -8,7 +8,7 @@
 import "../src/giraffe.less";
  import Giraffe from "../src/Giraffe";
 // import Quill from "quill";
-import "quill/dist/quill.snow.css"
+// import "quill/dist/quill.snow.css"
 import React from "react";
 import * as ReactDom from "react-dom";
 $(function () {

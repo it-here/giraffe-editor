@@ -19,6 +19,7 @@ class  Giraffe extends React.Component{
                 },
                 imageDrop: true
             },
+            scrollingContainer: '.editor-scroller',
             theme: 'snow'
         });
         let title = document.createElement('div');
@@ -41,7 +42,7 @@ class  Giraffe extends React.Component{
                         </span>
                         <span className="ql-formats">
                         <select className="ql-header">
-                            <option value="false">正文</option>
+                            <option selected >正文</option>
                             <option value="1">标题</option>
                             <option value="2">副标题</option>
                             <option value="3">标题1</option>
