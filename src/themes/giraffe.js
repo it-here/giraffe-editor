@@ -16,6 +16,7 @@ const SnowTheme = Quill.import("themes/snow");
 
 import imageHandler from "../handlers/image";
 import coverHandler from "../handlers/cover";
+import insertsHandler from "../handlers/inserts";
 
 const ALIGNS = [ false, 'center', 'right', 'justify' ];
 
@@ -37,6 +38,35 @@ class GiraffeTheme extends SnowTheme{
 
     constructor(quill, options) {
         super(quill, options);
+
+        let listener = (e) => {
+            if (!document.body.contains(quill.root)) {
+                return document.body.removeEventListener('click', listener);
+            }
+            if (this.tooltip != null && !this.tooltip.root.contains(e.target) &&
+                document.activeElement !== this.tooltip.textbox && !this.quill.hasFocus()) {
+                this.tooltip.hide();
+            }
+
+            if (this.pickers != null) {
+                this.pickers.forEach(function(picker) {
+                    if (!picker.container.contains(e.target)) {
+                        picker.close();
+                    }
+                });
+            }
+
+            let insertPicker = document.querySelector(".ql-inserts-label");
+            let insertBtn = document.querySelector(".ql-inserts");
+            debugger
+            if(insertPicker){
+                if( !insertPicker.contains(e.target)  && !insertBtn.contains(e.target) ){
+                    insertPicker.classList.remove("ql-expanded");
+                }
+            }
+        };
+        quill.emitter.listenDOM('click', document.body, listener);
+
     }
 
     extendGiraffeToolbar(toolbar){
@@ -148,14 +178,21 @@ class GiraffeTheme extends SnowTheme{
         this.quill.on(Emitter.events.EDITOR_CHANGE, update);
     }
 
+    showInserts(){
+
+    }
+
+
+
 }
 
 GiraffeTheme.DEFAULTS = extend(true, {}, SnowTheme.DEFAULTS, {
     modules: {
         toolbar: {
             handlers: {
+                inserts: insertsHandler,
                 image: imageHandler,
-                cover: coverHandler
+                cover: coverHandler,
             }
         }
     }

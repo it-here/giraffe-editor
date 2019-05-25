@@ -17,6 +17,10 @@
         font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
         transition: height 0.2s ease-in;
 
+        input.ql-cover[type=file]{
+          display: none;
+        }
+
         .ql-formats{
           position: relative;
         }
@@ -95,7 +99,36 @@
           }
 
         }
+        .ql-cover-container{
+          display: none;
+          &.ql-show{
+            display: block;
+          }
+          .ql-cover-container-wrapper{
+            position: relative;
+            .ql-cover-img-box{
+              img{
+                max-width: 100%;
+              }
+            }
+            .ql-cover-action{
+              position: absolute;
+              bottom: 3px;
+              width: 100%;
+              text-align: right;
+              button{
+                cursor: pointer;
+                width: 42px;
+                height: 42px;
+                border: 1px #a7a7a7 solid;
+                outline: none;
+                margin-left: -1px;
+                background-color: #7d7d7d78;
+              }
+            }
+          }
 
+        }
         .ql-title{
           padding-bottom: 20px;
           .ql-title-box{
@@ -142,7 +175,7 @@
   }
 
   .ql-inserts-label{
-    //display: none;
+    display: none;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -157,6 +190,9 @@
     width: 130px;
     border-radius: 3px;
 
+    &.ql-expanded{
+      display: block;
+    }
     .ql-picker{
       width: 100%;
       &.ql-hover-picker{
@@ -165,6 +201,7 @@
         height: 30px;
         padding: 1.5px 0 1.5px 20px;
         &.ql-expanded{
+          display: block;
           .ql-picker-label{
             border: 0;
           }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Quill from "./quill/quill";
+import GiraffeQuill from "./quill/giraffeQuill";
 
 class  Giraffe extends React.Component{
 
@@ -11,7 +11,8 @@ class  Giraffe extends React.Component{
     }
 
     componentDidMount() {
-        this.quill = new Quill('#editor', {
+        let me = this;
+        this.quill = new GiraffeQuill('#editor', {
             modules: {
                 toolbar: '#toolbar' ,
                 imageResize:{
@@ -22,19 +23,7 @@ class  Giraffe extends React.Component{
             scrollingContainer: '.editor-scroller',
             theme: 'snow'
         });
-        let cover = document.createElement('div');
-        cover.className = 'ql-cover';
-        this.quill.addContainer(cover,document.querySelector(".ql-editor"));
 
-        let title = document.createElement('div');
-        title.className = 'ql-title';
-        let titleBox = document.createElement('div');
-        titleBox.className = 'ql-title-box';
-        let titleInput = document.createElement('input');
-        titleBox.append(titleInput);
-        title.append(titleBox);
-
-        this.quill.addContainer(title,document.querySelector(".ql-editor"));
     }
 
     render() {
@@ -92,7 +81,7 @@ class  Giraffe extends React.Component{
                         </span>
                         <span className="ql-formats">
                             <button className="ql-inserts"/>
-                            <span className="ql-inserts-label ql-expanded">
+                            <span className="ql-inserts-label">
                                 <select className="ql-image" data-label="图片">
                                     <option value="upload" >本地上传</option>
                                     <option value="url" >图片链接</option>

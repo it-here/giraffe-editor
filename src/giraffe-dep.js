@@ -1,4 +1,4 @@
-import Quill from "./quill/quill";
+import Quill from "./quill/giraffeQuill";
 
 
 import ImageResize from 'quill-image-resize-module';
