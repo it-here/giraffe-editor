@@ -142,7 +142,7 @@
   }
 
   .ql-inserts-label{
-    display: none;
+    //display: none;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -156,6 +156,71 @@
     box-shadow: 0 1px 6px rgba(99,99,99,0.2);
     width: 130px;
     border-radius: 3px;
+
+    .ql-picker{
+      width: 100%;
+      &.ql-hover-picker{
+        position: relative;
+        width: 100%;
+        height: 30px;
+        padding: 1.5px 0 1.5px 20px;
+        &.ql-expanded{
+          .ql-picker-label{
+            border: 0;
+          }
+        }
+        .ql-picker-label{
+          width: 100%;
+          svg{
+            left: 0;
+          }
+          .ql-picker-label-text{
+            font-size: 10px;
+            line-height: 27px;
+          }
+        }
+        .ql-picker-options{
+          left: 100%;
+          top: -2px!important;
+        }
+        .ql-picker-arrow{
+          svg{
+            right: 5px;
+          }
+        }
+
+      }
+    }
+
+    .ql-hover-button{
+      width: 100%;
+      position: relative;
+      height: 30px;
+      padding: 1.5px 0 1.5px 20px;
+      .ql-button{
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        padding-left: 8px;
+        padding-right: 2px;
+        position: relative;
+        width: 100%;
+        svg{
+          position: absolute;
+          margin-top: -9px;
+          top: 50%;
+          left: 0;
+          width: 18px;
+          height: 18px;
+        }
+        .ql-button-text{
+          font-size: 10px;
+          line-height: 27px;
+        }
+      }
+    }
+
+
   }
 
 }

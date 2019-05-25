@@ -22,6 +22,10 @@ class  Giraffe extends React.Component{
             scrollingContainer: '.editor-scroller',
             theme: 'snow'
         });
+        let cover = document.createElement('div');
+        cover.className = 'ql-cover';
+        this.quill.addContainer(cover,document.querySelector(".ql-editor"));
+
         let title = document.createElement('div');
         title.className = 'ql-title';
         let titleBox = document.createElement('div');
@@ -29,6 +33,7 @@ class  Giraffe extends React.Component{
         let titleInput = document.createElement('input');
         titleBox.append(titleInput);
         title.append(titleBox);
+
         this.quill.addContainer(title,document.querySelector(".ql-editor"));
     }
 
@@ -81,16 +86,18 @@ class  Giraffe extends React.Component{
                             <button className="ql-blockquote"/>
                             <button className="ql-code-block"/>
                             <select className="ql-align"/>
-                            <select className="ql-image">
-                                <option value="upload" >本地上传</option>
-                            </select>
+
                             <button className="ql-link"/>
                             <button className="ql-video"/>
                         </span>
                         <span className="ql-formats">
                             <button className="ql-inserts"/>
                             <span className="ql-inserts-label ql-expanded">
-
+                                <select className="ql-image" data-label="图片">
+                                    <option value="upload" >本地上传</option>
+                                    <option value="url" >图片链接</option>
+                                </select>
+                                <button className="ql-cover">封面</button>
                             </span>
                         </span>
                     </div>

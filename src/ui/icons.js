@@ -5,7 +5,10 @@
  * Date: 2019-05-18
  * Time: 22:25
  */
-module.exports ={
+
+import Quill from "quill";
+
+let Icons ={
     'clean'     : require('../icons/clean.svg'),
     'code'      : require('../icons/code.svg'),
     'code-block': require('../icons/code.svg'),
@@ -13,7 +16,7 @@ module.exports ={
         '+1'      : require('../icons/indent.svg'),
         '-1'      : require('../icons/outdent.svg')
     },
-    'image':{
-        'upload': require('../icons/indent.svg')
-    }
+    'cover': require('../icons/cover.svg')
 };
+Icons = Object.assign(Quill.import("ui/icons"),Icons);
+export default Icons;
