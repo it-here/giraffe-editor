@@ -5,7 +5,7 @@
  * Date: 2019-05-25
  * Time: 22:15
  */
-import Quill from "quill"
+import Quill from "quill";
 import Parchment from 'parchment';
 import logger from 'quill/core/logger';
 let debug = logger('quill:toolbar');
@@ -54,7 +54,7 @@ class GiraffeToolbar extends Toolbar{
                 }
                 e.preventDefault();
             }
-            if(format !== 'inserts'){
+            if(format !== 'inserts' && format !== 'cover' ){
                 this.quill.focus();
             }
 
