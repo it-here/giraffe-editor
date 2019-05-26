@@ -70,6 +70,6 @@ export default function (value) {
         fileInput.click();
     }else {
         debugger
-        this.quill.theme.tooltip.edit('url');
+        this.quill.theme.tooltip.edit('image-url');
     }
 }

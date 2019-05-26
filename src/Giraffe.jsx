@@ -84,7 +84,7 @@ class  Giraffe extends React.Component{
                             <span className="ql-inserts-label">
                                 <select className="ql-image" data-label="图片">
                                     <option value="upload" >本地上传</option>
-                                    <option value="url" >图片链接</option>
+                                    <option value="image-url" >图片链接</option>
                                 </select>
                                 <button className="ql-cover">封面</button>
                             </span>

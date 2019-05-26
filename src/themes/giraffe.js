@@ -307,7 +307,6 @@ class GiraffeTooltip extends Tooltip{
 
     save() {
         let value = this.textbox.value;
-        debugger
         switch(this.root.getAttribute('data-mode')) {
             case 'link': {
                 let scrollTop = this.quill.root.scrollTop;
@@ -332,14 +331,11 @@ class GiraffeTooltip extends Tooltip{
                 }
                 break;
             } // eslint-disable-next-line no-fallthrough
-            case 'url':{
+            case 'image-url':{
                 value = extractVideoUrl(value);
                 if (!value) break;
                 let range = this.quill.getSelection(true);
                 if (range != null) {
-                    // let index = range.index + range.length;
-                    // this.quill.insertEmbed(index, this.root.getAttribute('data-mode'), value, Emitter.sources.USER);
-                    // this.quill.setSelection(index + 2, Emitter.sources.USER);
 
                     this.quill.updateContents(new Delta()
                             .retain(range.index)
@@ -403,7 +399,7 @@ function fillSelect(select, values, defaultValue = false) {
 
 GiraffeTooltip.TEMPLATE = [
     '<a class="ql-preview" target="_blank" href="about:blank"></a>',
-    '<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL" data-url="">',
+    '<input type="text" data-formula="e=mc^2" data-link="https://www.ithere.net" data-video="Embed URL" data-image-url="图片地址">',
     '<a class="ql-action"></a>',
     '<a class="ql-remove"></a>'
 ].join('');
