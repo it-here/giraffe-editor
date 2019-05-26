@@ -28,6 +28,7 @@ import {formulaHandler,
     linkHandler,
     coverHandler,
     insertsHandler} from "../handlers/index";
+import {Range} from "quill/core/selection";
 
 
 const ALIGNS = [ false, 'center', 'right', 'justify' ];
@@ -266,10 +267,12 @@ class GiraffeTooltip extends Tooltip{
                 let [link, offset] = this.quill.scroll.descendant(LinkBlot, range.index);
                 if (link != null) {
                     this.linkRange = new Range(range.index - offset, link.length());
+                    //this.linkRange = range;
                     let preview = LinkBlot.formats(link.domNode);
                     this.preview.textContent = preview;
                     this.preview.setAttribute('href', preview);
                     this.show();
+                    debugger
                     this.position(this.quill.getBounds(this.linkRange));
                     return;
                 }
@@ -293,6 +296,7 @@ class GiraffeTooltip extends Tooltip{
         } else if (mode !== this.root.getAttribute('data-mode')) {
             this.textbox.value = '';
         }
+        debugger
         this.position(this.quill.getBounds(this.quill.selection.savedRange));
         this.textbox.select();
         this.textbox.setAttribute('placeholder', this.textbox.getAttribute(`data-${mode}`) || '');
@@ -309,6 +313,7 @@ class GiraffeTooltip extends Tooltip{
         let value = this.textbox.value;
         switch(this.root.getAttribute('data-mode')) {
             case 'link': {
+                debugger
                 let scrollTop = this.quill.root.scrollTop;
                 if (this.linkRange) {
                     this.quill.formatText(this.linkRange, 'link', value, Emitter.sources.USER);
