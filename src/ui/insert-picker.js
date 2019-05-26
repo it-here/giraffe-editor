@@ -20,7 +20,6 @@ class  InsertPicker extends Picker{
         this.container.append(i);
         this.container.classList.add('ql-hover-picker');
         [].forEach.call(this.container.querySelectorAll('.ql-picker-item'), (item) => {
-            debugger
             item.innerHTML = item.getAttribute('data-label');
         });
     }

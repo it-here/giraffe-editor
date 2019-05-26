@@ -10,7 +10,6 @@ export default function (value) {
     let inerts = me.container.querySelector('.ql-inserts');
     if(inerts){
         let insertsLabel = me.container.querySelector('.ql-inserts-label');
-        debugger
         if(insertsLabel){
             if(insertsLabel.classList.contains("ql-expanded")){
                 insertsLabel.classList.remove("ql-expanded")

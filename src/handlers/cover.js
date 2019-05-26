@@ -15,7 +15,6 @@ export default function( toolbar ) {
     if(!me){
         me = toolbar;
     }
-    debugger
 
     let fileInput = me.container.querySelector('input.ql-cover[type=file]');
     if (fileInput == null) {

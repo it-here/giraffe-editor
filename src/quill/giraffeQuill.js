@@ -60,7 +60,6 @@ class GiraffeQuill extends Quill{
         let btnCamera = document.createElement('button');
         btnCamera.innerHTML = IconCamera;
         btnCamera.addEventListener('click',function (e) {
-            debugger
             let toolbar = me.getModule('toolbar');
             if(toolbar){
                 let cover = toolbar.handlers.cover;
@@ -85,6 +84,7 @@ class GiraffeQuill extends Quill{
         this.coverContainer =  cover;
         this.addContainer(cover,document.querySelector(".ql-editor"));
 
+        //region Title
         let title = document.createElement('div');
         title.className = 'ql-title';
         let titleBox = document.createElement('div');
@@ -93,21 +93,13 @@ class GiraffeQuill extends Quill{
         titleBox.append(titleInput);
         title.append(titleBox);
         this.titleContainer =  title;
+        //endregion
         this.addContainer(title,document.querySelector(".ql-editor"));
-    }
-
-    focus() {
-        debugger
-        let scrollTop = this.scrollingContainer.scrollTop;
-        this.selection.focus();
-        this.scrollingContainer.scrollTop = scrollTop;
-        this.scrollIntoView();
     }
 
     setCover(value){
         let me = this;
         me.cover = value;
-        debugger
         if(value){
             let image = document.createElement('img');
             image.setAttribute('src',value);
@@ -150,6 +142,14 @@ class GiraffeQuill extends Quill{
         if(title){
             title.value = value;
         }
+    }
+
+    setMode(value){
+        this.mode = value;
+    }
+
+    getMode(){
+        return this.mode;
     }
 
 }

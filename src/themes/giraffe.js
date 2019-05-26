@@ -7,16 +7,28 @@
  */
 import extend from 'extend';
 import Quill from "quill";
+import Delta from 'quill-delta';
 import Emitter from "quill/core/emitter";
 import InsertPicker from "../ui/insert-picker";
 const IconPicker = Quill.import("ui/icon-picker");
 const ColorPicker = Quill.import("ui/color-picker");
 const Picker = Quill.import("ui/picker");
 const SnowTheme = Quill.import("themes/snow");
+const Tooltip = Quill.import("ui/tooltip");
 
-import imageHandler from "../handlers/image";
-import coverHandler from "../handlers/cover";
-import insertsHandler from "../handlers/inserts";
+const LinkBlot = Quill.import("formats/link");
+
+import Keyboard from 'quill/modules/keyboard';
+
+import icons from "../ui/icons";
+
+import {formulaHandler,
+    imageHandler,
+    videoHandler,
+    linkHandler,
+    coverHandler,
+    insertsHandler} from "../handlers/index";
+
 
 const ALIGNS = [ false, 'center', 'right', 'justify' ];
 
@@ -58,7 +70,6 @@ class GiraffeTheme extends SnowTheme{
 
             let insertPicker = document.querySelector(".ql-inserts-label");
             let insertBtn = document.querySelector(".ql-inserts");
-            debugger
             if(insertPicker){
                 if( !insertPicker.contains(e.target)  && !insertBtn.contains(e.target) ){
                     insertPicker.classList.remove("ql-expanded");
@@ -67,6 +78,18 @@ class GiraffeTheme extends SnowTheme{
         };
         quill.emitter.listenDOM('click', document.body, listener);
 
+    }
+
+    extendToolbar(toolbar) {
+        toolbar.container.classList.add('ql-snow');
+        this.buildButtons([].slice.call(toolbar.container.querySelectorAll('button')), icons);
+        this.buildPickers([].slice.call(toolbar.container.querySelectorAll('select')), icons);
+        this.tooltip = new GiraffeTooltip(this.quill, this.options.bounds);
+        if (toolbar.container.querySelector('.ql-link')) {
+            this.quill.keyboard.addBinding({ key: 'K', shortKey: true }, function(range, context) {
+                toolbar.handlers['link'].call(toolbar, !context.format.link);
+            });
+        }
     }
 
     extendGiraffeToolbar(toolbar){
@@ -86,7 +109,6 @@ class GiraffeTheme extends SnowTheme{
         buttons.forEach((button) => {
             let className = button.getAttribute('class') || '';
             if(button.parentElement.classList.contains('ql-inserts-label')){
-                debugger
                 let innerText = button.innerText;
                 className.split(/\s+/).forEach((name) => {
                     button.classList.add('ql-hover-button');
@@ -117,6 +139,7 @@ class GiraffeTheme extends SnowTheme{
                     spanWrapper.append(spanText);
                     button.append(spanWrapper);
                 });
+
             }else {
                 className.split(/\s+/).forEach((name) => {
                     if (!name.startsWith('ql-')) return;
@@ -139,7 +162,6 @@ class GiraffeTheme extends SnowTheme{
 
     buildPickers(selects, icons) {
         this.pickers = selects.map((select) => {
-            debugger
             if( select.parentElement.classList.contains('ql-inserts-label') ){
                 if (select.querySelector('option') == null) {
                     fillSelect(select, ALIGNS);
@@ -191,12 +213,181 @@ GiraffeTheme.DEFAULTS = extend(true, {}, SnowTheme.DEFAULTS, {
         toolbar: {
             handlers: {
                 inserts: insertsHandler,
+                formula: formulaHandler,
                 image: imageHandler,
+                video: videoHandler,
+                link: linkHandler,
                 cover: coverHandler,
             }
         }
     }
 });
+
+class GiraffeTooltip extends Tooltip{
+    constructor(quill, boundsContainer) {
+        super(quill, boundsContainer);
+        this.textbox = this.root.querySelector('input[type="text"]');
+        this.preview = this.root.querySelector('a.ql-preview');
+        this.listen();
+    }
+
+    listen() {
+        this.textbox.addEventListener('keydown', (event) => {
+            if (Keyboard.match(event, 'enter')) {
+                this.save();
+                event.preventDefault();
+            } else if (Keyboard.match(event, 'escape')) {
+                this.cancel();
+                event.preventDefault();
+            }
+        });
+
+        this.root.querySelector('a.ql-action').addEventListener('click', (event) => {
+            if (this.root.classList.contains('ql-editing')) {
+                this.save();
+            } else {
+                this.edit('link', this.preview.textContent);
+            }
+            event.preventDefault();
+        });
+        this.root.querySelector('a.ql-remove').addEventListener('click', (event) => {
+            if (this.linkRange != null) {
+                let range = this.linkRange;
+                this.restoreFocus();
+                this.quill.formatText(range, 'link', false, Emitter.sources.USER);
+                delete this.linkRange;
+            }
+            event.preventDefault();
+            this.hide();
+        });
+        this.quill.on(Emitter.events.SELECTION_CHANGE, (range, oldRange, source) => {
+            if (range == null) return;
+            if (range.length === 0 && source === Emitter.sources.USER) {
+                let [link, offset] = this.quill.scroll.descendant(LinkBlot, range.index);
+                if (link != null) {
+                    this.linkRange = new Range(range.index - offset, link.length());
+                    let preview = LinkBlot.formats(link.domNode);
+                    this.preview.textContent = preview;
+                    this.preview.setAttribute('href', preview);
+                    this.show();
+                    this.position(this.quill.getBounds(this.linkRange));
+                    return;
+                }
+            } else {
+                delete this.linkRange;
+            }
+            this.hide();
+        });
+
+    }
+
+    cancel() {
+        this.hide();
+    }
+
+    edit(mode = 'link', preview = null) {
+        this.root.classList.remove('ql-hidden');
+        this.root.classList.add('ql-editing');
+        if (preview != null) {
+            this.textbox.value = preview;
+        } else if (mode !== this.root.getAttribute('data-mode')) {
+            this.textbox.value = '';
+        }
+        this.position(this.quill.getBounds(this.quill.selection.savedRange));
+        this.textbox.select();
+        this.textbox.setAttribute('placeholder', this.textbox.getAttribute(`data-${mode}`) || '');
+        this.root.setAttribute('data-mode', mode);
+    }
+
+    restoreFocus() {
+        let scrollTop = this.quill.scrollingContainer.scrollTop;
+        this.quill.focus();
+        this.quill.scrollingContainer.scrollTop = scrollTop;
+    }
+
+    save() {
+        let value = this.textbox.value;
+        debugger
+        switch(this.root.getAttribute('data-mode')) {
+            case 'link': {
+                let scrollTop = this.quill.root.scrollTop;
+                if (this.linkRange) {
+                    this.quill.formatText(this.linkRange, 'link', value, Emitter.sources.USER);
+                    delete this.linkRange;
+                } else {
+                    this.restoreFocus();
+                    this.quill.format('link', value, Emitter.sources.USER);
+                }
+                this.quill.root.scrollTop = scrollTop;
+                break;
+            }
+            case 'video': {
+                value = extractVideoUrl(value);
+                if (!value) break;
+                let range = this.quill.getSelection(true);
+                if (range != null) {
+                    let index = range.index + range.length;
+                    this.quill.insertEmbed(index, this.root.getAttribute('data-mode'), value, Emitter.sources.USER);
+                    this.quill.setSelection(index + 2, Emitter.sources.USER);
+                }
+                break;
+            } // eslint-disable-next-line no-fallthrough
+            case 'url':{
+                value = extractVideoUrl(value);
+                if (!value) break;
+                let range = this.quill.getSelection(true);
+                if (range != null) {
+                    // let index = range.index + range.length;
+                    // this.quill.insertEmbed(index, this.root.getAttribute('data-mode'), value, Emitter.sources.USER);
+                    // this.quill.setSelection(index + 2, Emitter.sources.USER);
+
+                    this.quill.updateContents(new Delta()
+                            .retain(range.index)
+                            .delete(range.length)
+                            .insert({ image: value })
+                        , Emitter.sources.USER);
+                    this.quill.setSelection(range.index + 1, Emitter.sources.SILENT);
+
+                }
+                break;
+            }
+            case 'formula': {
+                if (!value) break;
+                let range = this.quill.getSelection(true);
+                if (range != null) {
+                    let index = range.index + range.length;
+                    this.quill.insertEmbed(index, this.root.getAttribute('data-mode'), value, Emitter.sources.USER);
+                    if (this.root.getAttribute('data-mode') === 'formula') {
+                        this.quill.insertText(index + 1, ' ', Emitter.sources.USER);
+                    }
+                    this.quill.setSelection(index + 2, Emitter.sources.USER);
+                }
+                break;
+            }
+            default:
+        }
+        this.textbox.value = '';
+        this.hide();
+    }
+
+    show() {
+        super.show();
+        this.root.removeAttribute('data-mode');
+    }
+
+}
+
+function extractVideoUrl(url) {
+    let match = url.match(/^(?:(https?):\/\/)?(?:(?:www|m)\.)?youtube\.com\/watch.*v=([a-zA-Z0-9_-]+)/) ||
+        url.match(/^(?:(https?):\/\/)?(?:(?:www|m)\.)?youtu\.be\/([a-zA-Z0-9_-]+)/);
+    if (match) {
+        return (match[1] || 'https') + '://www.youtube.com/embed/' + match[2] + '?showinfo=0';
+    }
+    if (match = url.match(/^(?:(https?):\/\/)?(?:www\.)?vimeo\.com\/(\d+)/)) {  // eslint-disable-line no-cond-assign
+        return (match[1] || 'https') + '://player.vimeo.com/video/' + match[2] + '/';
+    }
+    return url;
+}
 
 function fillSelect(select, values, defaultValue = false) {
     values.forEach(function(value) {
@@ -209,5 +400,12 @@ function fillSelect(select, values, defaultValue = false) {
         select.appendChild(option);
     });
 }
+
+GiraffeTooltip.TEMPLATE = [
+    '<a class="ql-preview" target="_blank" href="about:blank"></a>',
+    '<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL" data-url="">',
+    '<a class="ql-action"></a>',
+    '<a class="ql-remove"></a>'
+].join('');
 
 export default GiraffeTheme
