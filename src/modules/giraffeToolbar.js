@@ -13,6 +13,7 @@ const Toolbar = Quill.import("modules/toolbar");
 class GiraffeToolbar extends Toolbar{
 
     constructor(quill, options){
+        debugger
         super(quill,options);
     }
 
