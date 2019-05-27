@@ -16,7 +16,7 @@ class GiraffeToolbar extends Toolbar{
         super(quill,options);
     }
 
-    attach(input) {
+    attach1(input) {
         let format = [].find.call(input.classList, (className) => {
             return className.indexOf('ql-') === 0;
         });
