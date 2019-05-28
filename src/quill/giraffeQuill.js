@@ -42,6 +42,9 @@ Quill.register('modules/imageDrop', ImageDrop);
 class GiraffeQuill extends Quill{
     constructor(container, options = {}){
         super(container,options);
+        this.cover = null;
+        this.title = null;
+        this.mode = "html";
         this.create();
     }
 

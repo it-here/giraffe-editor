@@ -20,7 +20,15 @@ const ColorPicker = Quill.import("ui/color-picker");
 const Picker = Quill.import("ui/picker");
 const SnowTheme = Quill.import("themes/snow");
 
-import {coverHandler, formulaHandler, imageHandler, insertsHandler, linkHandler, videoHandler} from "../handlers/index";
+import {
+    boldHandler,
+    coverHandler,
+    formulaHandler,
+    imageHandler,
+    insertsHandler,
+    linkHandler,
+    videoHandler
+} from "../handlers/index";
 
 const ALIGNS = [ false, 'center', 'right', 'justify' ];
 
@@ -204,6 +212,7 @@ GiraffeTheme.DEFAULTS = extend(true, {}, SnowTheme.DEFAULTS, {
     modules: {
         toolbar: {
             handlers: {
+                bold: boldHandler,
                 inserts: insertsHandler,
                 formula: formulaHandler,
                 image: imageHandler,
