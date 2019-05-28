@@ -20,9 +20,13 @@ let SizeStyle = Quill.import('attributors/style/size');
 SizeStyle.whitelist = ['9pt', '10pt', '11pt', '12pt','14pt','16pt','18pt','22pt','24pt','30pt','36pt'];
 
 
+
 Quill.register({
     'formats/align': AlignStyle,
     'formats/size': SizeStyle,
+
+
+
     'modules/toolbar': GiraffeToolbar,
     'themes/snow': snow,
     'ui/icons': Icons

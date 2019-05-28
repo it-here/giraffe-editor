@@ -13,7 +13,6 @@ const Toolbar = Quill.import("modules/toolbar");
 class GiraffeToolbar extends Toolbar{
 
     constructor(quill, options){
-        debugger
         super(quill,options);
     }
 
@@ -38,6 +37,7 @@ class GiraffeToolbar extends Toolbar{
         }
         let eventName = input.tagName === 'SELECT' ? 'change' : 'click';
         input.addEventListener(eventName, (e) => {
+            debugger
             let value;
             if (input.tagName === 'SELECT') {
                 if (input.selectedIndex < 0) return;
