@@ -95,6 +95,9 @@ class GiraffeToolbar extends Toolbar{
                     if (typeof value === 'string') {
                         value = value.replace(/\"/g, '\\"');
                     }
+                    if( value === undefined ){
+                        value = false;
+                    }
                     option = input.querySelector(`option[value="${value}"]`);
                 }
                 if (option == null) {
