@@ -79,5 +79,46 @@ class GiraffeToolbar extends Toolbar{
         this.controls.push([format, input]);
     }
 
+    update(range) {
+        let formats = range == null ? {} : this.quill.getFormat(range);
+        this.controls.forEach(function(pair) {
+            let [format, input] = pair;
+            if (input.tagName === 'SELECT') {
+                debugger
+                let option;
+                if (range == null) {
+                    option = null;
+                } else if (formats[format] == null) {
+                    option = input.querySelector('option[selected]');
+                } else if (!Array.isArray(formats[format])) {
+                    let value = formats[format];
+                    if (typeof value === 'string') {
+                        value = value.replace(/\"/g, '\\"');
+                    }
+                    option = input.querySelector(`option[value="${value}"]`);
+                }
+                if (option == null) {
+                    input.value = '';   // TODO make configurable?
+                    input.selectedIndex = -1;
+                } else {
+                    option.selected = true;
+                }
+            } else {
+                if (range == null) {
+                    input.classList.remove('ql-active');
+                } else if (input.hasAttribute('value')) {
+                    // both being null should match (default values)
+                    // '1' should match with 1 (headers)
+                    let isActive = formats[format] === input.getAttribute('value') ||
+                        (formats[format] != null && formats[format].toString() === input.getAttribute('value')) ||
+                        (formats[format] == null && !input.getAttribute('value'));
+                    input.classList.toggle('ql-active', isActive);
+                } else {
+                    input.classList.toggle('ql-active', formats[format] != null);
+                }
+            }
+        });
+    }
+
 }
 export default GiraffeToolbar

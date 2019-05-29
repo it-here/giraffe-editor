@@ -21,7 +21,13 @@ const Picker = Quill.import("ui/picker");
 const SnowTheme = Quill.import("themes/snow");
 
 import {
+    headerHandler,
     boldHandler,
+    italicHandler,
+    underlineHandler,
+    strikeHandler,
+    colorHandler,
+    backgroundHandler,
     coverHandler,
     formulaHandler,
     imageHandler,
@@ -212,7 +218,13 @@ GiraffeTheme.DEFAULTS = extend(true, {}, SnowTheme.DEFAULTS, {
     modules: {
         toolbar: {
             handlers: {
+                header: headerHandler,
                 bold: boldHandler,
+                italic: italicHandler,
+                underline: underlineHandler,
+                strike: strikeHandler,
+                color: colorHandler,
+                background: backgroundHandler,
                 inserts: insertsHandler,
                 formula: formulaHandler,
                 image: imageHandler,
