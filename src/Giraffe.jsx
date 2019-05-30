@@ -29,6 +29,9 @@ class  Giraffe extends React.Component{
     render() {
         return (
             <div className="giraffe-editor">
+                <div className={`sidebar right-sidebar`}>
+                    {this.props.children}
+                </div>
                 <div className="toolbar-wrapper">
                     <div id="toolbar">
                         <span className="ql-formats">
@@ -94,7 +97,7 @@ class  Giraffe extends React.Component{
                 <div className="editor-scroller">
                     <div className="editor-wrapper">
                         <div id="editor">
-                            <div>ss</div>
+
                         </div>
                     </div>
                 </div>

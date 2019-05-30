@@ -13,6 +13,9 @@ import underlineHandler from "./underline";
 import strikeHandler from "./strike";
 import colorHandler from "./color";
 import backgroundHandler from "./background";
+import blockquoteHandler from "./blockquote";
+import codeBlockHandler from "./codeBlock";
+import alignHandler from "./align";
 import formulaHandler from "./formula";
 import imageHandler from "./image";
 import videoHandler from "./video";
@@ -29,6 +32,9 @@ export {
     strikeHandler,
     colorHandler,
     backgroundHandler,
+    blockquoteHandler,
+    codeBlockHandler,
+    alignHandler,
     formulaHandler,
     imageHandler,
     videoHandler,

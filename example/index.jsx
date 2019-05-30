@@ -5,7 +5,7 @@
  * Date: 2019-05-18
  * Time: 08:49
  */
-import "../src/assets/giraffe.less";
+import "../src/assets/giraffe-editor.less";
  import Giraffe from "../src/Giraffe";
 // import Quill from "quill";
 // import "quill/dist/quill.snow.css"
