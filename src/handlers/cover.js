@@ -25,20 +25,32 @@ export default function( toolbar ) {
         fileInput.addEventListener('change', () => {
             if (fileInput.files != null && fileInput.files[0] != null) {
                 me.quill.removeCover();
-                if( me.options.upload && me.options.upload.cover && me.options.upload.cover.url ){
+                let coverConfig = null;
+                if( me.options.upload && me.options.upload.cover ){
+                    coverConfig = me.options.upload.cover;
+                }
+                if( coverConfig ){
+
+                    if( coverConfig.size < fileInput.files[0].size ){
+                        if ( coverConfig.outSize ){
+                            coverConfig.outSize();
+                        }
+                        return;
+                    }
+
                     let formData = new FormData();
                     formData.append("file",fileInput.files[0]);
                     axios({
                         method:'post',
-                        url: me.options.urls.cover,
+                        url: coverConfig.url,
                         headers:{
                             'content-type': 'multipart/form-data'
                         },
                         data: formData
                     }).then((response)=>{
                         let imageUrl = null;
-                        if( me.options.upload.cover.afterUpload ){
-                            imageUrl = me.options.upload.cover.afterUpload(response);
+                        if( coverConfig.afterUpload ){
+                            imageUrl = coverConfig.afterUpload(response);
                         }else {
                             imageUrl = response;
                         }
@@ -50,6 +62,10 @@ export default function( toolbar ) {
                             , Emitter.sources.USER);
                         this.quill.setSelection(range.index + 1, Emitter.sources.SILENT);
                         fileInput.value = "";
+                    }).catch((error)=>{
+                        if(coverConfig.uploadFail){
+                            coverConfig.uploadFail(error);
+                        }
                     });
                 }else {
                     let reader = new FileReader();

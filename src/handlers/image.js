@@ -19,21 +19,30 @@ export default function (value) {
             fileInput.classList.add('ql-image');
             fileInput.addEventListener('change', () => {
                 if (fileInput.files != null && fileInput.files[0] != null) {
-
-                    if( me.options.upload && me.options.upload.image && me.options.upload.image.url ){
+                    let imageConfig = null;
+                    if( me.options.upload && me.options.upload.image ){
+                        imageConfig = me.options.upload.image;
+                    }
+                    if( imageConfig ){
+                        if( imageConfig.size < fileInput.files[0].size ){
+                            if ( imageConfig.outSize ){
+                                imageConfig.outSize();
+                            }
+                            return;
+                        }
                         let formData = new FormData();
                         formData.append("file",fileInput.files[0]);
                         axios({
                             method:'post',
-                            url: me.options.urls.image,
+                            url: imageConfig.url,
                             headers:{
                                 'content-type': 'multipart/form-data'
                             },
                             data: formData
                         }).then((response)=>{
                             let imageUrl = null;
-                            if( me.options.upload.image.afterUpload ){
-                                imageUrl = me.options.upload.image.afterUpload(response);
+                            if( afterUpload ){
+                                imageUrl = afterUpload(response);
                             }else {
                                 imageUrl = response;
                             }
@@ -45,6 +54,10 @@ export default function (value) {
                                 , Emitter.sources.USER);
                             this.quill.setSelection(range.index + 1, Emitter.sources.SILENT);
                             fileInput.value = "";
+                        }).catch((error)=>{
+                            if(imageConfig.uploadFail){
+                                imageConfig.uploadFail(error);
+                            }
                         });
                     }else {
                         let reader = new FileReader();
@@ -69,7 +82,6 @@ export default function (value) {
         }
         fileInput.click();
     }else {
-        debugger
         this.quill.theme.tooltip.edit('image-url');
     }
 }

@@ -22,6 +22,7 @@ const SnowTheme = Quill.import("themes/snow");
 
 import {
     headerHandler,
+    sizeHandler,
     boldHandler,
     italicHandler,
     underlineHandler,
@@ -98,18 +99,18 @@ class GiraffeTheme extends SnowTheme{
         }
     }
 
-    extendGiraffeToolbar(toolbar){
-        console.log(toolbar)
-    }
-
-
-    addModule(name) {
-        let module = super.addModule(name);
-        if (name === 'toolbar') {
-            this.extendGiraffeToolbar(module);
-        }
-        return module;
-    }
+    // extendGiraffeToolbar(toolbar){
+    //     console.log(toolbar)
+    // }
+    //
+    //
+    // addModule(name) {
+    //     let module = super.addModule(name);
+    //     if (name === 'toolbar') {
+    //         this.extendGiraffeToolbar(module);
+    //     }
+    //     return module;
+    // }
 
     buildButtons(buttons, icons) {
         buttons.forEach((button) => {
@@ -206,11 +207,6 @@ class GiraffeTheme extends SnowTheme{
         this.quill.on(Emitter.events.EDITOR_CHANGE, update);
     }
 
-    showInserts(){
-
-    }
-
-
 
 }
 
@@ -219,6 +215,7 @@ GiraffeTheme.DEFAULTS = extend(true, {}, SnowTheme.DEFAULTS, {
         toolbar: {
             handlers: {
                 header: headerHandler,
+                size: sizeHandler,
                 bold: boldHandler,
                 italic: italicHandler,
                 underline: underlineHandler,

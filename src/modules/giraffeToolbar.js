@@ -16,7 +16,7 @@ class GiraffeToolbar extends Toolbar{
         super(quill,options);
     }
 
-    attach1(input) {
+    attach(input) {
         let format = [].find.call(input.classList, (className) => {
             return className.indexOf('ql-') === 0;
         });
@@ -37,7 +37,6 @@ class GiraffeToolbar extends Toolbar{
         }
         let eventName = input.tagName === 'SELECT' ? 'change' : 'click';
         input.addEventListener(eventName, (e) => {
-            debugger
             let value;
             if (input.tagName === 'SELECT') {
                 if (input.selectedIndex < 0) return;
@@ -84,12 +83,11 @@ class GiraffeToolbar extends Toolbar{
         this.controls.forEach(function(pair) {
             let [format, input] = pair;
             if (input.tagName === 'SELECT') {
-                debugger
                 let option;
                 if (range == null) {
                     option = null;
                 } else if (formats[format] == null) {
-                    option = input.querySelector('option[selected]');
+                    option = input.querySelector('option[selected]') || input.querySelector('option[value="false"]');
                 } else if (!Array.isArray(formats[format])) {
                     let value = formats[format];
                     if (typeof value === 'string') {

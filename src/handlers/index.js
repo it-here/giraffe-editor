@@ -6,6 +6,7 @@
  * Time: 21:49
  */
 import headerHandler from "./header";
+import sizeHandler from "./size";
 import boldHandler from "./bold";
 import italicHandler from "./italic";
 import underlineHandler from "./underline";
@@ -21,6 +22,7 @@ import insertsHandler from "./inserts";
 
 export {
     headerHandler,
+    sizeHandler,
     boldHandler,
     italicHandler,
     underlineHandler,

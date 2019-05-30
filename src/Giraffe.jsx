@@ -36,7 +36,7 @@ class  Giraffe extends React.Component{
                         </span>
                         <span className="ql-formats">
                             <select className="ql-header">
-                                <option value={false} selected >正文</option>
+                                <option value="false" selected >正文</option>
                                 <option value="1">标题</option>
                                 <option value="2">副标题</option>
                                 <option value="3">标题1</option>
@@ -47,7 +47,7 @@ class  Giraffe extends React.Component{
                             <select className="ql-size">
                                 <option value="9pt">9</option>
                                 <option value="10pt">10</option>
-                                <option value="11pt" selected >11</option>
+                                <option value="false" selected >11</option>
                                 <option value="12pt">12</option>
                                 <option value="14pt">14</option>
                                 <option value="16pt">16</option>
