@@ -2,7 +2,7 @@
   "name": "editor",
   "version": "1.0.0",
   "description": "",
-  "main": "src/Giraffe.jsx",
+  "main": "dist/main.js",
   "dependencies": {
     "quill": "^1.3.6",
     "quill-image-drop-module": "^1.0.3",
