@@ -84,8 +84,8 @@ let config = {
         new webpack.ProvidePlugin({
             $ : 'jquery',
             jQuery : 'jquery',
-            'window.Quill': 'quill/dist/quill.js',
-            'Quill': 'quill/dist/quill.js'
+            'window.Quill': 'quill',
+            'Quill': 'quill'
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",

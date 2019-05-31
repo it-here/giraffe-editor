@@ -12,9 +12,9 @@ class  Giraffe extends React.Component{
 
     componentDidMount() {
         let me = this;
-        this.quill = new GiraffeQuill('#editor', {
+        this.quill = new GiraffeQuill('.giraffe-editor-body', {
             modules: {
-                toolbar: '#toolbar' ,
+                toolbar: '.giraffe-toolbar' ,
                 imageResize:{
                     modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
                 },
@@ -33,7 +33,7 @@ class  Giraffe extends React.Component{
                     {this.props.children}
                 </div>
                 <div className="toolbar-wrapper">
-                    <div id="toolbar">
+                    <div className="giraffe-toolbar">
                         <span className="ql-formats">
                             <button className="ql-clean"/>
                         </span>
@@ -96,7 +96,7 @@ class  Giraffe extends React.Component{
                 </div>
                 <div className="editor-scroller">
                     <div className="editor-wrapper">
-                        <div id="editor">
+                        <div className="giraffe-editor-body">
 
                         </div>
                     </div>
