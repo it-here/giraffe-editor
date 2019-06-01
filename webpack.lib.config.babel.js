@@ -53,7 +53,13 @@ let config = {
             'window.Quill': 'quill',
             'Quill': 'quill'
         })
-    ]
+    ],
+    externals : {
+        'react':"React",
+        'react-dom':"ReactDOM",
+        'jquery': 'jQuery',
+        'quill':'Quill'
+    }
 };
 
 module.exports = config;
