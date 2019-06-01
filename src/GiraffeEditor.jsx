@@ -13,6 +13,7 @@ class  GiraffeEditor extends React.Component{
 
     componentDidMount() {
         let me = this;
+        const {onQuillReady} = this.props;
         const {options} = this.props;
         let defaultOptions = {
             modules: {
@@ -26,8 +27,11 @@ class  GiraffeEditor extends React.Component{
             theme: 'giraffe'
         };
         this.quill = new GiraffeQuill('.giraffe-editor-body',Object.assign({},defaultOptions,options) );
-
+        if(onQuillReady){
+            onQuillReady(me.quill);
+        }
     }
+
 
     render() {
         return (
@@ -111,13 +115,7 @@ class  GiraffeEditor extends React.Component{
 
 GiraffeEditor.propTypes = {
     options: PropTypes.object,
-    getHtml: PropTypes.func,
-    setHtml: PropTypes.func,
-    getCover: PropTypes.func,
-    setCover: PropTypes.func,
-    getTitle: PropTypes.func,
-    setTitle: PropTypes.func,
-    getQuill: PropTypes.func
+    onQuillReady: PropTypes.func
 };
 
 GiraffeEditor.defaultProps = {

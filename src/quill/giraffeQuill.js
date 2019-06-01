@@ -25,8 +25,6 @@ Quill.register({
     'formats/align': AlignStyle,
     'formats/size': SizeStyle,
 
-
-
     'modules/toolbar': GiraffeToolbar,
     'themes/giraffe': giraffe,
     'ui/icons': Icons
@@ -97,6 +95,9 @@ class GiraffeQuill extends Quill{
         let titleBox = document.createElement('div');
         titleBox.className = 'ql-title-box';
         let titleInput = document.createElement('input');
+        titleInput.addEventListener('change',function (e) {
+            me.title = e.target;
+        });
         titleBox.append(titleInput);
         title.append(titleBox);
         this.titleContainer =  title;
@@ -122,7 +123,6 @@ class GiraffeQuill extends Quill{
 
     getCover(){
         let cover = this.cover;
-        console.log(cover)
     }
 
     removeCover(){

@@ -1,0 +1,226 @@
+@import "~quill/dist/quill.snow.css";
+.giraffe-editor {
+  height: 100%;
+  min-width: 1480px;
+  position: relative;
+}
+.giraffe-editor .sidebar.right-sidebar {
+  position: absolute;
+  width: 203px;
+  left: calc(50% + 501px);
+  top: 56px;
+}
+.giraffe-editor .toolbar-wrapper {
+  box-shadow: 0 3px 2px rgba(20, 20, 20, 0.12);
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow {
+  background-color: #f7f7f7;
+  height: 46px;
+  padding: 11px 0 8px;
+  white-space: nowrap;
+  border: none;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Helvetica, Tahoma, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+  transition: height 0.2s ease-in;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow input.ql-cover[type=file] {
+  display: none;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-formats {
+  position: relative;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-picker-label {
+  outline: none;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-picker-options .ql-picker-item {
+  outline: none;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-header {
+  width: 75px;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-header .ql-picker-options span {
+  text-align: left;
+}
+.giraffe-editor .toolbar-wrapper .ql-toolbar.ql-snow .ql-size {
+  width: 50px;
+}
+.giraffe-editor .editor-scroller {
+  width: 100%;
+  height: calc(100% - 46px);
+  position: relative;
+  overflow-y: auto;
+}
+.giraffe-editor .editor-scroller .editor-wrapper {
+  width: 716px;
+  margin: 10px auto;
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: auto !important;
+  background: #fff;
+  border-bottom: 1px solid #d9d9d9;
+  box-shadow: 0 1px 6px #ccc;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 90px;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow {
+  border: 0;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow .ql-tooltip::before {
+  content: '访问URL:';
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow .ql-tooltip[data-mode=link]::before {
+  content: "输入链接:";
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+  content: '保存';
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow .ql-tooltip a.ql-action::after {
+  content: '编辑';
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container.ql-snow .ql-tooltip a.ql-remove::before {
+  content: '移除';
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container {
+  display: none;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container.ql-show {
+  display: block;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container .ql-cover-container-wrapper {
+  position: relative;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container .ql-cover-container-wrapper .ql-cover-img-box img {
+  max-width: 100%;
+  width: 100%;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container .ql-cover-container-wrapper .ql-cover-action {
+  position: absolute;
+  bottom: 3px;
+  width: 100%;
+  text-align: right;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-cover-container .ql-cover-container-wrapper .ql-cover-action button {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  border: 1px #a7a7a7 solid;
+  outline: none;
+  margin-left: -1px;
+  background-color: #7d7d7d78;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-title {
+  padding-bottom: 20px;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-title .ql-title-box {
+  box-sizing: content-box;
+  width: auto;
+  font-size: 22.5pt;
+  height: 60px;
+  border-bottom: 1px solid #e8ecf1;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-title .ql-title-box input {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-size: 100%;
+  line-height: 50px;
+  color: #333;
+  font-weight: bold;
+  background: transparent;
+}
+.giraffe-editor .editor-scroller .editor-wrapper .ql-container .ql-editor {
+  font-size: 11pt;
+  line-height: 1.7;
+  min-height: 1172px;
+  padding: 0;
+}
+.giraffe-editor .ql-inserts {
+  outline: none;
+}
+.giraffe-editor .ql-inserts::before {
+  content: '插入';
+}
+.giraffe-editor .ql-inserts-label {
+  display: none;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 35px;
+  position: absolute;
+  z-index: 200;
+  white-space: nowrap;
+  padding: 5px 0;
+  background-color: #fff;
+  border-color: #ccc;
+  box-shadow: 0 1px 6px rgba(99, 99, 99, 0.2);
+  width: 130px;
+  border-radius: 3px;
+}
+.giraffe-editor .ql-inserts-label.ql-expanded {
+  display: block;
+}
+.giraffe-editor .ql-inserts-label .ql-picker {
+  width: 100%;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  padding: 1.5px 0 1.5px 20px;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker.ql-expanded {
+  display: block;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker.ql-expanded .ql-picker-label {
+  border: 0;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker .ql-picker-label {
+  width: 100%;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker .ql-picker-label svg {
+  left: 0;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker .ql-picker-label .ql-picker-label-text {
+  font-size: 10px;
+  line-height: 27px;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker .ql-picker-options {
+  left: 100%;
+  top: -2px !important;
+}
+.giraffe-editor .ql-inserts-label .ql-picker.ql-hover-picker .ql-picker-arrow svg {
+  right: 5px;
+}
+.giraffe-editor .ql-inserts-label .ql-hover-button {
+  width: 100%;
+  position: relative;
+  height: 30px;
+  padding: 1.5px 0 1.5px 20px;
+}
+.giraffe-editor .ql-inserts-label .ql-hover-button .ql-button {
+  cursor: pointer;
+  display: inline-block;
+  height: 100%;
+  padding-left: 8px;
+  padding-right: 2px;
+  position: relative;
+  width: 100%;
+}
+.giraffe-editor .ql-inserts-label .ql-hover-button .ql-button svg {
+  position: absolute;
+  margin-top: -9px;
+  top: 50%;
+  left: 0;
+  width: 18px;
+  height: 18px;
+}
+.giraffe-editor .ql-inserts-label .ql-hover-button .ql-button .ql-button-text {
+  font-size: 10px;
+  line-height: 27px;
+}

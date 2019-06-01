@@ -11,10 +11,13 @@ const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 let config = {
-    entry: './src/GiraffeEditor.jsx',
+    entry: {
+        "giraffe-editor": './src/GiraffeEditor.jsx',
+        "giraffe-quill": "./src/quill/giraffeQuill.js"
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'giraffe-editor.js',
+        filename: '[name].js',
         libraryTarget: 'umd'
     },
     resolve:{
