@@ -6,10 +6,10 @@
  * Time: 08:49
  */
 import "../src/assets/giraffe-editor.less";
- import Giraffe from "../src/Giraffe";
+ import GiraffeEditor from "../src/GiraffeEditor";
 import React from "react";
 import * as ReactDom from "react-dom";
 ReactDom.render(
-    <Giraffe/>,
+    <GiraffeEditor/>,
     document.getElementById("edit-demo")
 );

@@ -1,8 +1,9 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 
 import GiraffeQuill from "./quill/giraffeQuill";
 
-class  Giraffe extends React.Component{
+class  GiraffeEditor extends React.Component{
 
 
     constructor(props, context) {
@@ -12,7 +13,8 @@ class  Giraffe extends React.Component{
 
     componentDidMount() {
         let me = this;
-        this.quill = new GiraffeQuill('.giraffe-editor-body', {
+        const {options} = this.props;
+        let defaultOptions = {
             modules: {
                 toolbar: '.giraffe-toolbar' ,
                 imageResize:{
@@ -21,8 +23,9 @@ class  Giraffe extends React.Component{
                 imageDrop: true
             },
             scrollingContainer: '.editor-scroller',
-            theme: 'snow'
-        });
+            theme: 'giraffe'
+        };
+        this.quill = new GiraffeQuill('.giraffe-editor-body',Object.assign({},defaultOptions,options) );
 
     }
 
@@ -38,8 +41,8 @@ class  Giraffe extends React.Component{
                             <button className="ql-clean"/>
                         </span>
                         <span className="ql-formats">
-                            <select className="ql-header">
-                                <option value="false" selected >正文</option>
+                            <select className="ql-header" defaultValue="false">
+                                <option value="false" >正文</option>
                                 <option value="1">标题</option>
                                 <option value="2">副标题</option>
                                 <option value="3">标题1</option>
@@ -47,10 +50,10 @@ class  Giraffe extends React.Component{
                                 <option value="5">标题3</option>
 
                             </select>
-                            <select className="ql-size">
+                            <select className="ql-size" defaultValue="false">
                                 <option value="9pt">9</option>
                                 <option value="10pt">10</option>
-                                <option value="false" selected >11</option>
+                                <option value="false" >11</option>
                                 <option value="12pt">12</option>
                                 <option value="14pt">14</option>
                                 <option value="16pt">16</option>
@@ -106,5 +109,19 @@ class  Giraffe extends React.Component{
     }
 }
 
+GiraffeEditor.propTypes = {
+    options: PropTypes.object,
+    getHtml: PropTypes.func,
+    setHtml: PropTypes.func,
+    getCover: PropTypes.func,
+    setCover: PropTypes.func,
+    getTitle: PropTypes.func,
+    setTitle: PropTypes.func,
+    getQuill: PropTypes.func
+};
 
-export default Giraffe
+GiraffeEditor.defaultProps = {
+
+};
+
+export default GiraffeEditor

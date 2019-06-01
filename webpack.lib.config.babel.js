@@ -8,13 +8,13 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 let config = {
-    entry: './src/Giraffe.jsx',
+    entry: './src/GiraffeEditor.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
+        filename: 'giraffe-editor.js',
         libraryTarget: 'umd'
     },
     resolve:{
@@ -44,7 +44,8 @@ let config = {
         ]
     },
     plugins:[
-     //   new CleanWebpackPlugin(),
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             'window.Quill': 'quill',
             'Quill': 'quill'

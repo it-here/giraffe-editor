@@ -7,7 +7,7 @@
  */
 import Quill from "quill";
 import Icons from "../ui/icons";
-import snow from "../themes/giraffe"
+import giraffe from "../themes/giraffe"
 import GiraffeToolbar from "../modules/giraffeToolbar";
 import ImageResize from 'quill-image-resize-module';
 import { ImageDrop } from 'quill-image-drop-module';
@@ -28,7 +28,7 @@ Quill.register({
 
 
     'modules/toolbar': GiraffeToolbar,
-    'themes/snow': snow,
+    'themes/giraffe': giraffe,
     'ui/icons': Icons
 }, true);
 
