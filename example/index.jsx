@@ -10,6 +10,8 @@ import "../src/assets/giraffe-editor.less";
 import React from "react";
 import * as ReactDom from "react-dom";
 ReactDom.render(
-    <GiraffeEditor/>,
+    <GiraffeEditor>
+     <div>边栏</div>
+    </GiraffeEditor>,
     document.getElementById("edit-demo")
 );
