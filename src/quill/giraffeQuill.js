@@ -122,7 +122,7 @@ class GiraffeQuill extends Quill{
     }
 
     getCover(){
-        let cover = this.cover;
+        return this.cover;
     }
 
     removeCover(){
