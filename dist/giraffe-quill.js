@@ -1092,6 +1092,17 @@ eval("module.exports = \"<?xml version=\\\"1.0\\\" standalone=\\\"no\\\"?><!DOCT
 
 /***/ }),
 
+/***/ "./src/icons/save.svg":
+/*!****************************!*\
+  !*** ./src/icons/save.svg ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"<?xml version=\\\"1.0\\\" standalone=\\\"no\\\"?><!DOCTYPE svg PUBLIC \\\"-//W3C//DTD SVG 1.1//EN\\\" \\\"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\\\"><svg t=\\\"1559445032466\\\" class=\\\"icon\\\" style=\\\"\\\" viewBox=\\\"0 0 1024 1024\\\" version=\\\"1.1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" p-id=\\\"8937\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" width=\\\"18\\\" height=\\\"18\\\"><defs><style type=\\\"text/css\\\"></style></defs><path d=\\\"M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184z m456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840z\\\" p-id=\\\"8938\\\"></path><path d=\\\"M512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144z m0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z\\\" p-id=\\\"8939\\\"></path></svg>\";\n\n//# sourceURL=webpack:///./src/icons/save.svg?");
+
+/***/ }),
+
 /***/ "./src/modules/giraffeToolbar.js":
 /*!***************************************!*\
   !*** ./src/modules/giraffeToolbar.js ***!
@@ -1160,7 +1171,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var quil
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! quill */ \"quill\");\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_0__);\n/**\n * Created by Bane.Shi.\n * Copyright MoenSun\n * User: Bane.Shi\n * Date: 2019-05-18\n * Time: 22:25\n */\n\nvar Icons = {\n  'clean': __webpack_require__(/*! ../icons/clean.svg */ \"./src/icons/clean.svg\"),\n  'code': __webpack_require__(/*! ../icons/code.svg */ \"./src/icons/code.svg\"),\n  'code-block': __webpack_require__(/*! ../icons/code.svg */ \"./src/icons/code.svg\"),\n  'indent': {\n    '+1': __webpack_require__(/*! ../icons/indent.svg */ \"./src/icons/indent.svg\"),\n    '-1': __webpack_require__(/*! ../icons/outdent.svg */ \"./src/icons/outdent.svg\")\n  },\n  'cover': __webpack_require__(/*! ../icons/cover.svg */ \"./src/icons/cover.svg\")\n};\nIcons = Object.assign(quill__WEBPACK_IMPORTED_MODULE_0___default.a[\"import\"](\"ui/icons\"), Icons);\n/* harmony default export */ __webpack_exports__[\"default\"] = (Icons);\n\n//# sourceURL=webpack:///./src/ui/icons.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! quill */ \"quill\");\n/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_0__);\n/**\n * Created by Bane.Shi.\n * Copyright MoenSun\n * User: Bane.Shi\n * Date: 2019-05-18\n * Time: 22:25\n */\n\nvar Icons = {\n  'save': __webpack_require__(/*! ../icons/save.svg */ \"./src/icons/save.svg\"),\n  'clean': __webpack_require__(/*! ../icons/clean.svg */ \"./src/icons/clean.svg\"),\n  'code': __webpack_require__(/*! ../icons/code.svg */ \"./src/icons/code.svg\"),\n  'code-block': __webpack_require__(/*! ../icons/code.svg */ \"./src/icons/code.svg\"),\n  'indent': {\n    '+1': __webpack_require__(/*! ../icons/indent.svg */ \"./src/icons/indent.svg\"),\n    '-1': __webpack_require__(/*! ../icons/outdent.svg */ \"./src/icons/outdent.svg\")\n  },\n  'cover': __webpack_require__(/*! ../icons/cover.svg */ \"./src/icons/cover.svg\")\n};\nIcons = Object.assign(quill__WEBPACK_IMPORTED_MODULE_0___default.a[\"import\"](\"ui/icons\"), Icons);\n/* harmony default export */ __webpack_exports__[\"default\"] = (Icons);\n\n//# sourceURL=webpack:///./src/ui/icons.js?");
 
 /***/ }),
 

@@ -12,12 +12,22 @@ class  GiraffeEditor extends React.Component{
     }
 
     componentDidMount() {
+        const {onSaveDraft} = this.props;
         let me = this;
         const {onQuillReady} = this.props;
         const {options} = this.props;
         let defaultOptions = {
             modules: {
-                toolbar: '.giraffe-toolbar' ,
+                toolbar: {
+                    container:'.giraffe-toolbar',
+                    handlers:{
+                        save:function (value) {
+                            if(onSaveDraft){
+                                onSaveDraft();
+                            }
+                        }
+                    }
+                } ,
                 imageResize:{
                     modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
                 },
@@ -42,6 +52,7 @@ class  GiraffeEditor extends React.Component{
                 <div className="toolbar-wrapper">
                     <div className="giraffe-toolbar">
                         <span className="ql-formats">
+                            <button className="ql-save"/>
                             <button className="ql-clean"/>
                         </span>
                         <span className="ql-formats">
@@ -115,7 +126,8 @@ class  GiraffeEditor extends React.Component{
 
 GiraffeEditor.propTypes = {
     options: PropTypes.object,
-    onQuillReady: PropTypes.func
+    onQuillReady: PropTypes.func,
+    onSaveDraft: PropTypes.func
 };
 
 GiraffeEditor.defaultProps = {

@@ -9,6 +9,7 @@
 import Quill from "quill";
 
 let Icons ={
+    'save': require('../icons/save.svg'),
     'clean'     : require('../icons/clean.svg'),
     'code'      : require('../icons/code.svg'),
     'code-block': require('../icons/code.svg'),
