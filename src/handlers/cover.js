@@ -26,8 +26,8 @@ export default function( toolbar ) {
             if (fileInput.files != null && fileInput.files[0] != null) {
                 me.quill.removeCover();
                 let coverConfig = null;
-                if( me.options.upload && me.options.upload.cover ){
-                    coverConfig = me.options.upload.cover;
+                if( me.quill && me.quill.options && me.quill.options.upload && me.quill.options.upload.cover ){
+                    coverConfig = me.quill.options.upload.cover;
                 }
                 if( coverConfig ){
 
@@ -37,15 +37,15 @@ export default function( toolbar ) {
                         }
                         return;
                     }
-
+                    let fileFormKey = coverConfig.fileFormKey? coverConfig.fileFormKey: "file";
                     let formData = new FormData();
-                    formData.append("file",fileInput.files[0]);
+                    formData.append(fileFormKey,fileInput.files[0]);
                     axios({
                         method:'post',
                         url: coverConfig.url,
-                        headers:{
+                        headers:Object.assign({},{
                             'content-type': 'multipart/form-data'
-                        },
+                        },coverConfig.headers),
                         data: formData
                     }).then((response)=>{
                         let imageUrl = null;
@@ -54,13 +54,7 @@ export default function( toolbar ) {
                         }else {
                             imageUrl = response;
                         }
-                        let range = this.quill.getSelection(true);
-                        this.quill.updateContents(new Delta()
-                                .retain(range.index)
-                                .delete(range.length)
-                                .insert({ image: imageUrl })
-                            , Emitter.sources.USER);
-                        this.quill.setSelection(range.index + 1, Emitter.sources.SILENT);
+                        me.quill.setCover(imageUrl);
                         fileInput.value = "";
                     }).catch((error)=>{
                         if(coverConfig.uploadFail){
@@ -70,7 +64,6 @@ export default function( toolbar ) {
                 }else {
                     let reader = new FileReader();
                     reader.onload = (e) => {
-
                         me.quill.setCover(e.target.result);
                         fileInput.value = "";
                     };

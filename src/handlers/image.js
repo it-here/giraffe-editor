@@ -20,8 +20,8 @@ export default function (value) {
             fileInput.addEventListener('change', () => {
                 if (fileInput.files != null && fileInput.files[0] != null) {
                     let imageConfig = null;
-                    if( me.options.upload && me.options.upload.image ){
-                        imageConfig = me.options.upload.image;
+                    if( me.quill && me.quill.options && me.quill.options.upload && me.quill.options.upload.image ){
+                        imageConfig = me.quill.options.upload.image;
                     }
                     if( imageConfig ){
                         if( imageConfig.size < fileInput.files[0].size ){
@@ -30,19 +30,20 @@ export default function (value) {
                             }
                             return;
                         }
+                        let fileFormKey = imageConfig.fileFormKey? imageConfig.fileFormKey: "file";
                         let formData = new FormData();
-                        formData.append("file",fileInput.files[0]);
+                        formData.append(fileFormKey,fileInput.files[0]);
                         axios({
                             method:'post',
                             url: imageConfig.url,
-                            headers:{
+                            headers:Object.assign({},{
                                 'content-type': 'multipart/form-data'
-                            },
+                            },imageConfig.headers),
                             data: formData
                         }).then((response)=>{
                             let imageUrl = null;
-                            if( afterUpload ){
-                                imageUrl = afterUpload(response);
+                            if( imageConfig.afterUpload ){
+                                imageUrl = imageConfig.afterUpload(response);
                             }else {
                                 imageUrl = response;
                             }
