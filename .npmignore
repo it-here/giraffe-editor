@@ -1,4 +1,5 @@
 .idea
+.npmrc
 example
 webpack.config.babel.js
 webpack.lib.config.babel.js

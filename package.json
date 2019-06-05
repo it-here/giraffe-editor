@@ -1,5 +1,5 @@
 {
-  "name": "@ithere/giraffe-editor",
+  "name": "giraffe-editor",
   "version": "1.0.0",
   "description": "",
   "main": "dist/giraffe-editor.js",
