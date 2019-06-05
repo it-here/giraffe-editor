@@ -6,5 +6,6 @@
  * Time: 21:48
  */
 export default function (value) {
+    this.quill.format('code',value);
     this.quill.format('code-block',value);
 }
