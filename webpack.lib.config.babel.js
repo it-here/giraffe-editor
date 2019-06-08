@@ -55,9 +55,7 @@ let config = {
         })
     ],
     externals : {
-        'react':"React",
-        'react-dom':"ReactDOM",
-        'jquery': 'jQuery'
+
     }
 };
 
