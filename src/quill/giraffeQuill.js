@@ -102,6 +102,9 @@ class GiraffeQuill extends Quill{
         titleInput.addEventListener('change',function (e) {
             me.title = e.target;
         });
+        if(this.options.titlePlaceholder){
+            titleInput.placeholder = this.options.titlePlaceholder;
+        }
         titleBox.append(titleInput);
         title.append(titleBox);
         this.titleContainer =  title;

@@ -12,7 +12,7 @@ class  GiraffeEditor extends React.Component{
     }
 
     componentDidMount() {
-        const {onSaveDraft} = this.props;
+        const {onSaveDraft,placeholder,titlePlaceholder} = this.props;
         let me = this;
         const {onQuillReady} = this.props;
         const {options} = this.props;
@@ -34,6 +34,8 @@ class  GiraffeEditor extends React.Component{
                 imageDrop: true
             },
             scrollingContainer: '.editor-scroller',
+            placeholder: placeholder,
+            titlePlaceholder: titlePlaceholder,
             theme: 'giraffe'
         };
         this.quill = new GiraffeQuill('.giraffe-editor-body',Object.assign({},defaultOptions,options) );
@@ -127,7 +129,9 @@ class  GiraffeEditor extends React.Component{
 GiraffeEditor.propTypes = {
     options: PropTypes.object,
     onQuillReady: PropTypes.func,
-    onSaveDraft: PropTypes.func
+    onSaveDraft: PropTypes.func,
+    placeholder: PropTypes.string,
+    titlePlaceholder : PropTypes.string
 };
 
 GiraffeEditor.defaultProps = {

@@ -1,7 +1,7 @@
 @import "./giraffe";
 .giraffe-editor{
   height: 100%;
-  min-width: 1480px;
+  min-width: 1200px;
   position: relative;
 
   .sidebar{
@@ -9,7 +9,7 @@
     &.right-sidebar{
       position: absolute;
       width: 203px;
-      left: calc(50% + 451px);
+      left: calc(50% + 411px);
       top: 56px;
     }
   }
@@ -66,7 +66,7 @@
     position: relative;
     overflow-y: auto;
     .editor-wrapper{
-      width: 816px;
+      width: 766px;
       margin: 10px auto;
       border: none;
       font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", sans-serif;
@@ -162,6 +162,13 @@
               color: #333;
               font-weight: bold;
               background: transparent;
+            }
+          }
+        }
+        .ql-editor{
+          &.ql-blank{
+            &::before{
+              left: 60px;
             }
           }
         }

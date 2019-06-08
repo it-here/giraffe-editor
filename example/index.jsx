@@ -10,7 +10,7 @@ import "../src/assets/giraffe-editor.less";
 import React from "react";
 import * as ReactDom from "react-dom";
 ReactDom.render(
-    <GiraffeEditor>
+    <GiraffeEditor placeholder={`正文`} titlePlaceholder={`文章标题`}>
      <div>边栏</div>
     </GiraffeEditor>,
     document.getElementById("edit-demo")
