@@ -138,4 +138,4 @@ GiraffeEditor.defaultProps = {
 
 };
 
-export default GiraffeEditor
+export {  GiraffeQuill, GiraffeEditor as default}

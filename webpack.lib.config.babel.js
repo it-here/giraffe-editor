@@ -12,12 +12,12 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 let config = {
     entry: {
-        "giraffe-editor": './src/GiraffeEditor.jsx',
-        "giraffe-quill": "./src/quill/giraffeQuill.js"
+        "giraffe-editor": './src/GiraffeEditor.jsx'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
+        library: 'GiraffeEditor',
         libraryTarget: 'umd'
     },
     resolve:{
@@ -25,6 +25,7 @@ let config = {
         extensions: ['.web.js', '.js', '.json','.jsx'],
     },
     module:{
+        noParse: /node_modules\/quill\/dist/,
         rules:[
             {
                 test: /\.js[x]?$/,
@@ -55,7 +56,30 @@ let config = {
         })
     ],
     externals : {
-
+        'react': {
+            'commonjs': 'react',
+            'commonjs2': 'react',
+            'amd': 'react',
+            'root': 'React'
+        },
+        'react-dom': {
+            'commonjs': 'react-dom',
+            'commonjs2': 'react-dom',
+            'amd': 'react-dom',
+            'root': 'ReactDOM'
+        },
+        'react-dom/server': {
+            'commonjs': 'react-dom/server',
+            'commonjs2': 'react-dom/server',
+            'amd': 'react-dom/server',
+            'root': 'ReactDOMServer'
+        },
+        'prop-types': {
+            'commonjs': 'prop-types',
+            'commonjs2': 'prop-types',
+            'amd': 'prop-types',
+            'root': 'PropTypes'
+        }
     }
 };
 
