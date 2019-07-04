@@ -25,7 +25,6 @@ let config = {
         extensions: ['.web.js', '.js', '.json','.jsx'],
     },
     module:{
-        noParse: /node_modules\/quill\/dist/,
         rules:[
             {
                 test: /\.js[x]?$/,
