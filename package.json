@@ -1,6 +1,6 @@
 {
   "name": "giraffe-editor",
-  "version": "0.0.3",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/giraffe-editor.js",
   "dependencies": {
