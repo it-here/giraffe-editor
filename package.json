@@ -1,6 +1,6 @@
 {
   "name": "giraffe-editor",
-  "version": "0.0.6",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/giraffe-editor.js",
   "dependencies": {
@@ -36,6 +36,7 @@
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1",
+    "quill-delta": "latest",
     "parchment": "latest"
   },
   "scripts": {

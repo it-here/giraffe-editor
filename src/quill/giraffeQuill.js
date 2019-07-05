@@ -14,8 +14,6 @@ import { ImageDrop } from 'quill-image-drop-module';
 import IconCamera from "../icons/camera.svg";
 import IconDelete from "../icons/delete.svg";
 
-import CodeBlock from './formats/code';
-
 let AlignStyle = Quill.import('attributors/style/align');
 
 let SizeStyle = Quill.import('attributors/style/size');
@@ -27,7 +25,7 @@ Quill.register({
     'formats/align': AlignStyle,
     'formats/size': SizeStyle,
 
-    'formats/code-block': CodeBlock,
+    // 'formats/code-block': CodeBlock,
 
     'modules/toolbar': GiraffeToolbar,
     'themes/giraffe': giraffe,
